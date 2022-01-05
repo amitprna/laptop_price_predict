@@ -21,7 +21,7 @@ st_lottie(res_json)
 pipe = pickle.load(open('pipe.pkl','rb'))
 df = pickle.load(open('df.pkl','rb'))
 
-st.title("Laptop Predictor")
+st.title("Laptop Price Predictor")
 
 # brand
 company = st.selectbox('Brand',df['Company'].unique())
@@ -74,4 +74,4 @@ if st.button('Predict Price'):
     query = np.array([company,type,cpu,ram,gpu,os,weight,touchscreen,ips,ppi,ssd])
 
     query = query.reshape(1,11)
-    st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+    st.title("The predicted price of this configuration is ₹" + str(int(np.exp(pipe.predict(query)[0]))))
