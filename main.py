@@ -1,6 +1,21 @@
 import streamlit as st
 import pickle
 import numpy as np
+import requests
+from streamlit_lottie import st_lottie 
+
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+url = "https://assets6.lottiefiles.com/private_files/lf30_wo5lnbyz.json"
+res_json = load_lottieurl(url)
+st_lottie(res_json)
+
+
+
 
 # import the model
 pipe = pickle.load(open('pipe.pkl','rb'))
